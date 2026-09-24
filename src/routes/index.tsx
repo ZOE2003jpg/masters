@@ -297,9 +297,9 @@ function HomePage() {
             description="Real photographs from Sunday worship, Cultural Sunday, Family Weekend, Christmas Carol and the Master's Praise Concert."
           />
           <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-            {galleryHighlights.map((photo, i) => (
+              {galleryHighlights.map((photo, i) => (
               <Reveal
-                key={photo.src}
+                  key={`${photo.src}-${i}`}
                 delay={i * 80}
                 className={`overflow-hidden rounded-lg border border-border ${
                   i === 0 ? "col-span-2 aspect-16/10 lg:col-span-2 lg:row-span-2 lg:aspect-auto" : "aspect-4/3"

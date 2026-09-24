@@ -176,7 +176,7 @@ function GalleryPage() {
           <div className="mt-10 columns-2 gap-4 md:columns-3 lg:columns-4 [&>*]:mb-4">
             {active.photos.map((photo, i) => (
               <button
-                key={photo.src}
+                key={`${active.slug}-${photo.src}-${i}`}
                 onClick={() => setLightbox(i)}
                 className="focus-ring block w-full break-inside-avoid overflow-hidden rounded-lg border border-border bg-card"
                 aria-label={`Open photo ${i + 1} of ${active.photos.length}`}
