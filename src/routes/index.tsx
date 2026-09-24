@@ -43,26 +43,26 @@ import {
   visitorExpectations,
   TELEGRAM_CHANNEL_URL,
 } from "@/lib/site-data";
-import { galleryAlbums, galleryHighlights } from "@/lib/gallery";
+import { galleryHighlights } from "@/lib/gallery";
 import adeboye1 from "@/assets/adeboye-1.webp";
 import adeboye2 from "@/assets/adeboye-2.webp";
 
 export const heroSlides = [
   {
-    src: galleryAlbums[4]!.photos[1]!.src,
+    src: galleryHighlights[0]?.src ?? "",
     alt: "Congregation worshipping at RCCG The Master's Place, Ile-Ife",
   },
   {
-    src: galleryAlbums[1]!.photos[3]!.src,
-    alt: "Cultural Sunday celebration at RCCG The Master's Place",
+    src: galleryHighlights[1]?.src ?? "",
+    alt: "Church family at RCCG The Master's Place",
   },
   {
-    src: galleryAlbums[0]!.photos[2]!.src,
-    alt: "Live ministration at the Master's Praise Concert",
+    src: galleryHighlights[2]?.src ?? "",
+    alt: "A recent gathering at RCCG The Master's Place",
   },
   {
-    src: galleryAlbums[6]!.photos[0]!.src,
-    alt: "Praise and worship during Sunday service",
+    src: galleryHighlights[3]?.src ?? "",
+    alt: "Fellowship at RCCG The Master's Place",
   },
 ];
 
@@ -464,7 +464,7 @@ function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <Reveal className="relative aspect-4/3 overflow-hidden rounded-xl border border-border">
             <img
-              src={galleryAlbums[5]!.photos[2]!.src}
+              src={galleryHighlights[4]?.src ?? ""}
               alt="Members welcoming one another at RCCG The Master's Place"
               loading="lazy"
               className="size-full object-cover"
