@@ -203,7 +203,7 @@ function HomePage() {
             >
               {heroSlides.map((img, i) => (
                 <img
-                  key={img.src}
+                  key={`${img.src}-${i}`}
                   src={img.src}
                   alt={img.alt}
                   loading={i === 0 ? "eager" : "lazy"}
@@ -229,7 +229,7 @@ function HomePage() {
               <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
                 {heroSlides.map((slide, i) => (
                   <button
-                    key={slide.src}
+                    key={`${slide.src}-${i}`}
                     onClick={() => setCurrent(i)}
                     aria-label={`Go to slide ${i + 1}`}
                     aria-current={i === current}
