@@ -43,7 +43,7 @@ import {
   visitorExpectations,
   TELEGRAM_CHANNEL_URL,
 } from "@/lib/site-data";
-import { galleryAlbums, galleryHighlights } from "@/lib/gallery";
+import { galleryHighlights } from "@/lib/gallery";
 import adeboye1 from "@/assets/adeboye-1.webp";
 import adeboye2 from "@/assets/adeboye-2.webp";
 
@@ -464,7 +464,7 @@ function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <Reveal className="relative aspect-4/3 overflow-hidden rounded-xl border border-border">
             <img
-              src={galleryAlbums[5]!.photos[2]!.src}
+              src={galleryHighlights[4]?.src ?? ""}
               alt="Members welcoming one another at RCCG The Master's Place"
               loading="lazy"
               className="size-full object-cover"
