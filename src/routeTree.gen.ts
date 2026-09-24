@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AudioRouteImport } from './routes/audio'
+import { Route as CheckResponseRouteImport } from './routes/check-response'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as LibraryRouteImport } from './routes/library'
+import { Route as SermonsRouteImport } from './routes/sermons'
+import { Route as SubmitIssueRouteImport } from './routes/submit-issue'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AudioRoute = AudioRouteImport.update({
+  id: '/audio',
+  path: '/audio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckResponseRoute = CheckResponseRouteImport.update({
+  id: '/check-response',
+  path: '/check-response',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SermonsRoute = SermonsRouteImport.update({
+  id: '/sermons',
+  path: '/sermons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubmitIssueRoute = SubmitIssueRouteImport.update({
+  id: '/submit-issue',
+  path: '/submit-issue',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/audio': typeof AudioRoute
+  '/check-response': typeof CheckResponseRoute
+  '/gallery': typeof GalleryRoute
+  '/library': typeof LibraryRoute
+  '/sermons': typeof SermonsRoute
+  '/submit-issue': typeof SubmitIssueRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/audio': typeof AudioRoute
+  '/check-response': typeof CheckResponseRoute
+  '/gallery': typeof GalleryRoute
+  '/library': typeof LibraryRoute
+  '/sermons': typeof SermonsRoute
+  '/submit-issue': typeof SubmitIssueRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/audio': typeof AudioRoute
+  '/check-response': typeof CheckResponseRoute
+  '/gallery': typeof GalleryRoute
+  '/library': typeof LibraryRoute
+  '/sermons': typeof SermonsRoute
+  '/submit-issue': typeof SubmitIssueRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/audio'
+    | '/check-response'
+    | '/gallery'
+    | '/library'
+    | '/sermons'
+    | '/submit-issue'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/audio'
+    | '/check-response'
+    | '/gallery'
+    | '/library'
+    | '/sermons'
+    | '/submit-issue'
+  id:
+    | '__root__'
+    | '/'
+    | '/audio'
+    | '/check-response'
+    | '/gallery'
+    | '/library'
+    | '/sermons'
+    | '/submit-issue'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AudioRoute: typeof AudioRoute
+  CheckResponseRoute: typeof CheckResponseRoute
+  GalleryRoute: typeof GalleryRoute
+  LibraryRoute: typeof LibraryRoute
+  SermonsRoute: typeof SermonsRoute
+  SubmitIssueRoute: typeof SubmitIssueRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/audio': {
+      id: '/audio'
+      path: '/audio'
+      fullPath: '/audio'
+      preLoaderRoute: typeof AudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/check-response': {
+      id: '/check-response'
+      path: '/check-response'
+      fullPath: '/check-response'
+      preLoaderRoute: typeof CheckResponseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sermons': {
+      id: '/sermons'
+      path: '/sermons'
+      fullPath: '/sermons'
+      preLoaderRoute: typeof SermonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/submit-issue': {
+      id: '/submit-issue'
+      path: '/submit-issue'
+      fullPath: '/submit-issue'
+      preLoaderRoute: typeof SubmitIssueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AudioRoute: AudioRoute,
+  CheckResponseRoute: CheckResponseRoute,
+  GalleryRoute: GalleryRoute,
+  LibraryRoute: LibraryRoute,
+  SermonsRoute: SermonsRoute,
+  SubmitIssueRoute: SubmitIssueRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
