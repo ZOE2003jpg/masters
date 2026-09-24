@@ -47,7 +47,7 @@ import { galleryAlbums, galleryHighlights } from "@/lib/gallery";
 import adeboye1 from "@/assets/adeboye-1.webp";
 import adeboye2 from "@/assets/adeboye-2.webp";
 
-const heroSlides = [
+export const heroSlides = [
   {
     src: galleryAlbums[0]?.photos[7]?.src ?? "",
     alt: "Congregation worshipping at RCCG The Master's Place, Ile-Ife",
