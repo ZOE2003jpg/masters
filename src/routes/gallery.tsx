@@ -30,7 +30,7 @@ const groups = ["All", "Programs & Events", "Sunday Gatherings"] as const;
 
 function GalleryPage() {
   const [group, setGroup] = useState<(typeof groups)[number]>("All");
-  const [activeSlug, setActiveSlug] = useState<string>(galleryAlbums[0]?.slug ?? "");
+  const [activeSlug, setActiveSlug] = useState<string>(galleryAlbums[0]!.slug);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const albums = useMemo(
@@ -39,7 +39,7 @@ function GalleryPage() {
   );
 
   const active = useMemo(
-    () => galleryAlbums.find((a) => a.slug === activeSlug) ?? galleryAlbums[0],
+    () => galleryAlbums.find((a) => a.slug === activeSlug) ?? galleryAlbums[0]!,
     [activeSlug],
   );
 
@@ -47,9 +47,9 @@ function GalleryPage() {
   const step = useCallback(
     (delta: number) =>
       setLightbox((i) =>
-        i === null || !active ? i : (i + delta + active.photos.length) % active.photos.length,
+        i === null ? i : (i + delta + active.photos.length) % active.photos.length,
       ),
-    [active],
+    [active.photos.length],
   );
 
   useEffect(() => {
@@ -67,8 +67,7 @@ function GalleryPage() {
     };
   }, [lightbox, close, step]);
 
-  const currentPhoto: GalleryPhoto | null =
-    lightbox === null || !active ? null : (active.photos[lightbox] ?? null);
+  const currentPhoto: GalleryPhoto | null = lightbox === null ? null : active.photos[lightbox]!;
 
   return (
     <PageShell>
@@ -79,7 +78,7 @@ function GalleryPage() {
         actions={
           <Button asChild variant="outline" className="border-current/30 bg-transparent text-current hover:bg-current/10 hover:text-current">
             <a href={DRIVE_ROOT_URL} target="_blank" rel="noreferrer">
-              Full photo album <ExternalLink className="size-4" />
+              Full photo drive <ExternalLink className="size-4" />
             </a>
           </Button>
         }
@@ -120,7 +119,7 @@ function GalleryPage() {
                 >
                   <span className="relative block aspect-4/3 overflow-hidden">
                     <img
-                      src={album.photos[0]?.src}
+                      src={album.photos[0]!.src}
                       alt={album.title}
                       loading="lazy"
                       className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -147,7 +146,7 @@ function GalleryPage() {
                       rel="noreferrer"
                       className="focus-ring inline-flex items-center gap-1.5 font-medium text-foreground hover:text-accent"
                     >
-                      Photo album <ExternalLink className="size-3.5" />
+                      Drive album <ExternalLink className="size-3.5" />
                     </a>
                   </div>
                 </div>
@@ -157,7 +156,7 @@ function GalleryPage() {
         </div>
       </section>
 
-      {active && <section id="album-view" className="scroll-mt-24 bg-secondary py-14 lg:py-20">
+      <section id="album-view" className="scroll-mt-24 bg-secondary py-14 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -169,7 +168,7 @@ function GalleryPage() {
             </div>
             <Button asChild variant="outline" className="border-current/30 bg-transparent text-current hover:bg-current/10 hover:text-current" size="sm">
               <a href={active.driveUrl} target="_blank" rel="noreferrer">
-                View shared album <ExternalLink className="size-4" />
+                View all on Drive <ExternalLink className="size-4" />
               </a>
             </Button>
           </div>
@@ -192,7 +191,7 @@ function GalleryPage() {
             ))}
           </div>
         </div>
-      </section>}
+      </section>
 
       {currentPhoto && (
         <div
@@ -236,7 +235,7 @@ function GalleryPage() {
               className="max-h-[80vh] w-auto rounded-lg object-contain"
             />
             <figcaption className="mt-3 text-center text-xs text-white/70">
-              {currentPhoto.alt} · {(lightbox ?? 0) + 1} / {active?.photos.length ?? 0}
+              {currentPhoto.alt} · {lightbox! + 1} / {active.photos.length}
             </figcaption>
           </figure>
         </div>

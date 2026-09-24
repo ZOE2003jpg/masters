@@ -49,19 +49,19 @@ import adeboye2 from "@/assets/adeboye-2.webp";
 
 export const heroSlides = [
   {
-    src: galleryAlbums[0]?.photos[7]?.src ?? "",
+    src: galleryAlbums[4]!.photos[1]!.src,
     alt: "Congregation worshipping at RCCG The Master's Place, Ile-Ife",
   },
   {
-    src: galleryAlbums[0]?.photos[1]?.src ?? "",
-    alt: "Worship at RCCG The Master's Place",
+    src: galleryAlbums[1]!.photos[3]!.src,
+    alt: "Cultural Sunday celebration at RCCG The Master's Place",
   },
   {
-    src: galleryAlbums[0]?.photos[5]?.src ?? "",
-    alt: "Teaching at RCCG The Master's Place",
+    src: galleryAlbums[0]!.photos[2]!.src,
+    alt: "Live ministration at the Master's Praise Concert",
   },
   {
-    src: galleryAlbums[0]?.photos[3]?.src ?? "",
+    src: galleryAlbums[6]!.photos[0]!.src,
     alt: "Praise and worship during Sunday service",
   },
 ];
@@ -464,7 +464,7 @@ function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <Reveal className="relative aspect-4/3 overflow-hidden rounded-xl border border-border">
             <img
-               src={galleryAlbums[0]?.photos[4]?.src ?? ""}
+              src={galleryAlbums[5]!.photos[2]!.src}
               alt="Members welcoming one another at RCCG The Master's Place"
               loading="lazy"
               className="size-full object-cover"
