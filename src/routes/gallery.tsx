@@ -26,7 +26,7 @@ export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
-const groups = ["All", "Programs & Events"] as const;
+const groups = ["All", "Programs & Events", "Sunday Gatherings"] as const;
 
 function GalleryPage() {
   const [group, setGroup] = useState<(typeof groups)[number]>("All");

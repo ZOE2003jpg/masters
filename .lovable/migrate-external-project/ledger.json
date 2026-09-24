@@ -1,0 +1,9 @@
+{
+  "capabilities": [
+    {"capability":"application code","source":"public GitHub repository","outcome":"copied without changing site settings","status":"verified","next_action":"none"},
+    {"capability":"site imagery","source":"shared Google Photos album","outcome":"replaced gallery photography with ten supplied photos","status":"verified","next_action":"none"},
+    {"capability":"database records","source":"none detected","outcome":"not_applicable","status":"verified","next_action":"none"},
+    {"capability":"authentication","source":"no application auth flow detected","outcome":"not_applicable","status":"verified","next_action":"none"},
+    {"capability":"verification","source":"local preview","outcome":"home, gallery and lightbox checked","status":"verified","next_action":"none"}
+  ]
+}
