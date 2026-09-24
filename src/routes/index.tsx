@@ -49,20 +49,20 @@ import adeboye2 from "@/assets/adeboye-2.webp";
 
 export const heroSlides = [
   {
-    src: galleryAlbums[4]!.photos[1]!.src,
+    src: galleryHighlights[0]?.src ?? "",
     alt: "Congregation worshipping at RCCG The Master's Place, Ile-Ife",
   },
   {
-    src: galleryAlbums[1]!.photos[3]!.src,
-    alt: "Cultural Sunday celebration at RCCG The Master's Place",
+    src: galleryHighlights[1]?.src ?? "",
+    alt: "Church family at RCCG The Master's Place",
   },
   {
-    src: galleryAlbums[0]!.photos[2]!.src,
-    alt: "Live ministration at the Master's Praise Concert",
+    src: galleryHighlights[2]?.src ?? "",
+    alt: "A recent gathering at RCCG The Master's Place",
   },
   {
-    src: galleryAlbums[6]!.photos[0]!.src,
-    alt: "Praise and worship during Sunday service",
+    src: galleryHighlights[3]?.src ?? "",
+    alt: "Fellowship at RCCG The Master's Place",
   },
 ];
 
