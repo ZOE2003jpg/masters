@@ -2,7 +2,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 export interface ThreadMessage {
   id: string;
-  sender_type: "youth" | "admin";
+  sender_type: "visitor" | "pastor";
   message: string;
   created_at: string;
 }
