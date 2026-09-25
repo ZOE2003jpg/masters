@@ -14,115 +14,16 @@ export type Database = {
   }
   public: {
     Tables: {
-      messages: {
-        Row: {
-          created_at: string
-          id: string
-          message: string
-          sender_id: string | null
-          sender_type: Database["public"]["Enums"]["sender_type"]
-          submission_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          message: string
-          sender_id?: string | null
-          sender_type: Database["public"]["Enums"]["sender_type"]
-          submission_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          message?: string
-          sender_id?: string | null
-          sender_type?: Database["public"]["Enums"]["sender_type"]
-          submission_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "messages_submission_id_fkey"
-            columns: ["submission_id"]
-            isOneToOne: false
-            referencedRelation: "submissions"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      submissions: {
-        Row: {
-          access_code: string
-          category: string
-          created_at: string
-          id: string
-          status: Database["public"]["Enums"]["submission_status"]
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          access_code: string
-          category: string
-          created_at?: string
-          id?: string
-          status?: Database["public"]["Enums"]["submission_status"]
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          access_code?: string
-          category?: string
-          created_at?: string
-          id?: string
-          status?: Database["public"]["Enums"]["submission_status"]
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      user_roles: {
-        Row: {
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          id?: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      get_thread_by_code: { Args: { p_access_code: string }; Returns: Json }
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
-      reply_to_thread: {
-        Args: { p_access_code: string; p_message: string }
-        Returns: Json
-      }
-      submit_issue: {
-        Args: { p_category: string; p_message: string; p_title: string }
-        Returns: Json
-      }
+      [_ in never]: never
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
-      sender_type: "youth" | "admin"
-      submission_status: "new" | "awaiting_admin" | "awaiting_user" | "resolved"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -249,10 +150,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      app_role: ["admin", "moderator", "user"],
-      sender_type: ["youth", "admin"],
-      submission_status: ["new", "awaiting_admin", "awaiting_user", "resolved"],
-    },
+    Enums: {},
   },
 } as const
