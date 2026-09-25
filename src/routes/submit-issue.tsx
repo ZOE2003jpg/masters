@@ -31,6 +31,8 @@ export const Route = createFileRoute("/submit-issue")({
         property: "og:description",
         content: "Anonymous, secure pastoral care requests with a private access code.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: SubmitIssuePage,

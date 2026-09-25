@@ -2,7 +2,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 export interface ThreadMessage {
   id: string;
-  sender_type: "youth" | "admin";
+  sender_type: "visitor" | "pastor";
   message: string;
   created_at: string;
 }
@@ -78,7 +78,7 @@ export function subscribeToMessages(
       {
         event: "INSERT",
         schema: "public",
-        table: "messages",
+        table: "pastoral_messages",
         filter: `submission_id=eq.${submissionId}`,
       },
       (payload) => {
