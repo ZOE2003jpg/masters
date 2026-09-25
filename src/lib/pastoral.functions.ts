@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database, Tables } from "@/integrations/supabase/types";
@@ -7,7 +8,7 @@ type PastoralSubmission = Tables<"pastoral_submissions">;
 type PastoralMessage = Tables<"pastoral_messages">;
 
 const isPastoralStaff = async (
-  supabase: { rpc: (fn: "has_role", args: { _user_id: string; _role: Database["public"]["Enums"]["app_role"] }) => Promise<{ data: boolean | null; error: unknown }> },
+  supabase: SupabaseClient<Database>,
   userId: string,
 ) => {
   const [admin, pastor] = await Promise.all([
