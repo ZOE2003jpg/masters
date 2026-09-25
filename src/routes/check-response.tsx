@@ -29,6 +29,8 @@ export const Route = createFileRoute("/check-response")({
         property: "og:description",
         content: "Read the pastoral reply to your confidential submission using your access code.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: CheckResponsePage,
@@ -146,17 +148,17 @@ function CheckResponsePage() {
                 {messages.map((m) => (
                   <div
                     key={m.id}
-                    className={`flex ${m.sender_type === "youth" ? "justify-end" : "justify-start"}`}
+                    className={`flex ${m.sender_type === "visitor" ? "justify-end" : "justify-start"}`}
                   >
                     <div
                       className={`max-w-[85%] rounded-xl px-4 py-3 text-sm leading-relaxed ${
-                        m.sender_type === "youth"
+                        m.sender_type === "visitor"
                           ? "bg-primary text-primary-foreground"
                           : "border border-border bg-secondary text-secondary-foreground"
                       }`}
                     >
                       <p className="text-[10px] font-semibold tracking-[0.18em] uppercase opacity-70">
-                        {m.sender_type === "youth" ? "You" : "Church leadership"}
+                        {m.sender_type === "visitor" ? "You" : "Church leadership"}
                       </p>
                       <p className="mt-1.5 whitespace-pre-wrap">{m.message}</p>
                       <p className="mt-2 text-[10px] opacity-60">
