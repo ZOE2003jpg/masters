@@ -7,3 +7,4 @@
 - [x] Add protected pastoral staff sign-in and response workspace.
 - [x] Verify anonymous submission and private conversation lookup end to end.
 - [ ] Create pastoral staff accounts and assign pastor/admin roles in Supabase Auth.
+- [ ] Assign the newly created Supabase user the admin role and verify access.
