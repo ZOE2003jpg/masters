@@ -44,7 +44,7 @@ export async function submitIssue(data: {
 }
 
 export async function getThreadByCode(accessCode: string): Promise<ThreadData> {
-  const { data, error } = await supabase.rpc("get_thread_by_code", {
+  const { data, error } = await rpc("get_thread_by_code", {
     p_access_code: accessCode,
   });
 
@@ -56,7 +56,7 @@ export async function replyToThread(
   accessCode: string,
   message: string,
 ): Promise<{ success: boolean }> {
-  const { data, error } = await supabase.rpc("reply_to_thread", {
+  const { data, error } = await rpc("reply_to_thread", {
     p_access_code: accessCode,
     p_message: message,
   });
