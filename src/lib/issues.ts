@@ -78,7 +78,7 @@ export function subscribeToMessages(
       {
         event: "INSERT",
         schema: "public",
-        table: "messages",
+        table: "pastoral_messages",
         filter: `submission_id=eq.${submissionId}`,
       },
       (payload) => {
