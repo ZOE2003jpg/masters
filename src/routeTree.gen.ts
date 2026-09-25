@@ -10,21 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AudioRouteImport } from './routes/audio'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CheckResponseRouteImport } from './routes/check-response'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as SermonsRouteImport } from './routes/sermons'
 import { Route as SubmitIssueRouteImport } from './routes/submit-issue'
+import { Route as AuthenticatedPastoralCareRouteImport } from './routes/_authenticated/pastoral-care'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AudioRoute = AudioRouteImport.update({
   id: '/audio',
   path: '/audio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckResponseRoute = CheckResponseRouteImport.update({
@@ -52,68 +64,90 @@ const SubmitIssueRoute = SubmitIssueRouteImport.update({
   path: '/submit-issue',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedPastoralCareRoute =
+  AuthenticatedPastoralCareRouteImport.update({
+    id: '/pastoral-care',
+    path: '/pastoral-care',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/audio': typeof AudioRoute
+  '/auth': typeof AuthRoute
   '/check-response': typeof CheckResponseRoute
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
   '/sermons': typeof SermonsRoute
   '/submit-issue': typeof SubmitIssueRoute
+  '/pastoral-care': typeof AuthenticatedPastoralCareRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/audio': typeof AudioRoute
+  '/auth': typeof AuthRoute
   '/check-response': typeof CheckResponseRoute
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
   '/sermons': typeof SermonsRoute
   '/submit-issue': typeof SubmitIssueRoute
+  '/pastoral-care': typeof AuthenticatedPastoralCareRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/audio': typeof AudioRoute
+  '/auth': typeof AuthRoute
   '/check-response': typeof CheckResponseRoute
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
   '/sermons': typeof SermonsRoute
   '/submit-issue': typeof SubmitIssueRoute
+  '/_authenticated/pastoral-care': typeof AuthenticatedPastoralCareRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/audio'
+    | '/auth'
     | '/check-response'
     | '/gallery'
     | '/library'
     | '/sermons'
     | '/submit-issue'
+    | '/pastoral-care'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/audio'
+    | '/auth'
     | '/check-response'
     | '/gallery'
     | '/library'
     | '/sermons'
     | '/submit-issue'
+    | '/pastoral-care'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/audio'
+    | '/auth'
     | '/check-response'
     | '/gallery'
     | '/library'
     | '/sermons'
     | '/submit-issue'
+    | '/_authenticated/pastoral-care'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AudioRoute: typeof AudioRoute
+  AuthRoute: typeof AuthRoute
   CheckResponseRoute: typeof CheckResponseRoute
   GalleryRoute: typeof GalleryRoute
   LibraryRoute: typeof LibraryRoute
@@ -130,11 +164,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/audio': {
       id: '/audio'
       path: '/audio'
       fullPath: '/audio'
       preLoaderRoute: typeof AudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/check-response': {
@@ -172,12 +220,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SubmitIssueRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/pastoral-care': {
+      id: '/_authenticated/pastoral-care'
+      path: '/pastoral-care'
+      fullPath: '/pastoral-care'
+      preLoaderRoute: typeof AuthenticatedPastoralCareRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedPastoralCareRoute: typeof AuthenticatedPastoralCareRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedPastoralCareRoute: AuthenticatedPastoralCareRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AudioRoute: AudioRoute,
+  AuthRoute: AuthRoute,
   CheckResponseRoute: CheckResponseRoute,
   GalleryRoute: GalleryRoute,
   LibraryRoute: LibraryRoute,
