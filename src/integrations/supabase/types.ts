@@ -14,6 +14,87 @@ export type Database = {
   }
   public: {
     Tables: {
+      church_events: {
+        Row: {
+          created_at: string
+          description: string
+          end_date: string | null
+          event_date: string
+          flyer_path: string | null
+          id: string
+          is_featured: boolean
+          is_published: boolean
+          location: string
+          status: string
+          theme: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          end_date?: string | null
+          event_date: string
+          flyer_path?: string | null
+          id?: string
+          is_featured?: boolean
+          is_published?: boolean
+          location?: string
+          status?: string
+          theme?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          end_date?: string | null
+          event_date?: string
+          flyer_path?: string | null
+          id?: string
+          is_featured?: boolean
+          is_published?: boolean
+          location?: string
+          status?: string
+          theme?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      gallery_photos: {
+        Row: {
+          caption: string | null
+          category: string
+          created_at: string
+          display_order: number
+          id: string
+          is_visible: boolean
+          storage_path: string
+          updated_at: string
+        }
+        Insert: {
+          caption?: string | null
+          category?: string
+          created_at?: string
+          display_order?: number
+          id?: string
+          is_visible?: boolean
+          storage_path: string
+          updated_at?: string
+        }
+        Update: {
+          caption?: string | null
+          category?: string
+          created_at?: string
+          display_order?: number
+          id?: string
+          is_visible?: boolean
+          storage_path?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       pastoral_messages: {
         Row: {
           created_at: string
